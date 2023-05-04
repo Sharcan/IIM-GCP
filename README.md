@@ -35,13 +35,14 @@ After that you run the apply command :
 terraform apply -var="project=PROJECT_ID"
 ```
 WARNING : You must pass an argument -var to the command with the ID of YOUR project GCP !  
-WARNING 2: The first time you run this command, GCP needs to active the right, so an error can appear. Wait a few minutes and rerun the same command.  
-Say write `yes` when it ask you to. 
+WARNING 2: The first time you run this command, GCP needs to active the right, so an error can appear. If it happens wait a few minutes and rerun the same command.  
+Write `yes` when it ask you to. 
 
-Once the `apply` command finished, you have to remove the block we have commented in the `main.tf` and rerun:
+Once the `apply` command is finished, you have to remove the block we have commented in the `main.tf` and rerun:
 ```bash
 terraform init
 ```
+Write `yes` when it ask you to. 
 
 and Voila !
 
@@ -57,3 +58,5 @@ and finaly :
 ```bash
 terraform destroy
 ```
+
+Nicolas Brazzolotto
