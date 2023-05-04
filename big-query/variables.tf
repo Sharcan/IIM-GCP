@@ -17,5 +17,5 @@ variable "project" {
 }
 
 variable "bucket-function" {
-    default = "${local.timestamp}-function"
+    default = "bucket_function_iim_nico"
 }
