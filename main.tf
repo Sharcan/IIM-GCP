@@ -37,16 +37,32 @@ resource "google_project_service" "cloud-build" {
 
 module "storage" {
     source = "./storage"
+
+    project = var.project
+    region = var.region
+    zone = var.zone
 }
 
 module "functions" {
     source = "./functions"
+
+    project = var.project
+    region = var.region
+    zone = var.zone
 }
 
 module "big-query" {
     source = "./big-query"
+
+    project = var.project
+    region = var.region
+    zone = var.zone
 }
 
 module "layout" {
     source = "./layout"
+
+    project = var.project
+    region = var.region
+    zone = var.zone
 }
