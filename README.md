@@ -32,7 +32,7 @@ terraform init
 
 After that you run the apply command :
 ```bash
-terraform apply -var="image_id=PROJECT_ID"
+terraform apply -var="project=PROJECT_ID"
 ```
 WARNING : You must pass an argument -var to the command with the ID of YOUR project GCP !  
 This command will create all the GCP functions.
