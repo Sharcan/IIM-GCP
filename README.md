@@ -1,23 +1,58 @@
 # IIM-GCP | Nicolas Brazzolotto
 
-## Description
+## Initialization
 
-This action uses `gsutil` to create Cloud Storage Bucket for terraform backend state files. After creating bucket, it runs following terraform commands
+### Function
 
-- terraform fmt -check
-- terraform init
-- terraform validate
+First you have to install all the node modules for the function.  
+To do so, go to the **hello-world** directory
+```bash
+cd functions/hello-world
+```
+then 
+```bash
+npm install
+```
 
-## Inputs
 
-| parameter | description | required | default |
-| - | - | - | - |
-| project-id | GCP Project Id | `true` |  |
-| tf-backend-bucket-name | Cloud storage bucket name for terraform state file | `true` |  |
-| prefix | Prefix for tfstate file in storage bucket for terraform backend | `true` |  |
-| terraform-version | Terraform version | `false` | latest |
-| working-directory | Location of terraform scripts | `false` | . |
+### Terraform
+First you have to comment the lines **7** to **10** in the `main.tf` file
+All the next section:
+```tf
+backend "gcs" {
+        bucket  = "bucket-iim-dev-01"
+        prefix  = "terraform/state"
+    }
+```
 
-## Runs
+Then you can run the next command to init terraform:
+```bash
+terraform init
+```
 
-This action is a `composite` action.
+After that you run the apply command :
+```bash
+terraform apply
+```
+This command will create all the GCP functions.
+Say write `yes` when it ask you to. 
+
+Once the `apply` command finished, you have to remove the block we have commented in the `main.tf` and rerun:
+```bash
+terraform init
+```
+
+and Voila !
+
+## Destroy
+You can destroy all project by following these steps :  
+Comment the lines **7** to **10** in the `main.tf` file  
+Then run :
+```bash
+terraform init -migrate-state
+```
+
+and finaly :
+```bash
+terraform destroy
+```
