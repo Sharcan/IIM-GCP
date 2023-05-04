@@ -18,7 +18,7 @@ provider "google" {
 }
 
 # ACTIVATE FUNCTIONS API
-resource "google_project_service" "cloud-functions" {
+resource "google_project_service" "enable-cloud-functions-manager-api" {
   project = var.project
   service = "cloudfunctions.googleapis.com"
 
@@ -27,10 +27,18 @@ resource "google_project_service" "cloud-functions" {
 }
 
 # ACTIVE BUILD API
-resource "google_project_service" "cloud-build" {
+resource "google_project_service" "enable-cloud-build-manager-api" {
   project = var.project
   service = "cloudbuild.googleapis.com"
 
+  disable_dependent_services = true
+  disable_on_destroy         = false
+}
+
+# ACTIVE RESOURCES API
+resource "google_project_service" "enable-cloud-resource-manager-api" {
+  service                    = "cloudresourcemanager.googleapis.com"
+  
   disable_dependent_services = true
   disable_on_destroy         = false
 }

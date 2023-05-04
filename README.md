@@ -35,7 +35,7 @@ After that you run the apply command :
 terraform apply -var="project=PROJECT_ID"
 ```
 WARNING : You must pass an argument -var to the command with the ID of YOUR project GCP !  
-This command will create all the GCP functions.
+WARNING 2: The first time you run this command, GCP needs to active the right, so an error can appear. Wait a few minutes and rerun the same command.  
 Say write `yes` when it ask you to. 
 
 Once the `apply` command finished, you have to remove the block we have commented in the `main.tf` and rerun:
