@@ -19,7 +19,7 @@ provider "google" {
 
 # ACTIVATE FUNCTIONS API
 resource "google_project_service" "cloud-functions" {
-  project = var.project_id
+  project = var.project
   service = "cloudfunctions.googleapis.com"
 
   disable_dependent_services = true
@@ -28,7 +28,7 @@ resource "google_project_service" "cloud-functions" {
 
 # ACTIVE BUILD API
 resource "google_project_service" "cloud-build" {
-  project = var.project_id
+  project = var.project
   service = "cloudbuild.googleapis.com"
 
   disable_dependent_services = true
