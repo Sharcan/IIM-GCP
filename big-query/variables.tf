@@ -1,3 +1,7 @@
+locals {
+    timestamp = timestamp()
+}
+
 variable "region" {
     default = "europe-west1"
 }
@@ -13,5 +17,5 @@ variable "project" {
 }
 
 variable "bucket-function" {
-    default = "iiim_exo_4"
+    default = "${local.timestamp}-function"
 }
